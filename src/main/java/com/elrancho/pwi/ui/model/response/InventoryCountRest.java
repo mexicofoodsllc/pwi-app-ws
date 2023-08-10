@@ -9,6 +9,10 @@ public class InventoryCountRest {
 
 	private long storeId;
 	private long departmentId;
+	// ------------------Second phase Enhancement: Adding Areas: Code begin------------------//
+	private long areaId;
+	private String areaDescription;
+	// ------------------Second phase Enhancement: Adding Areas: Code // end------------------//
 	private String userId;
 	private long vendorItem;
 	private String itemDescription;
@@ -46,7 +50,24 @@ public String getUnitOfMeasure() {
 	public void setDepartmentId(long departmentId) {
 		this.departmentId = departmentId;
 	}
+	
+	// ------------------Second phase Enhancement: Adding Areas: Code begin------------------//
+	public long getAreaId() {
+		return areaId;
+	}
 
+	public void setAreaId(long areaId) {
+		this.areaId = areaId;
+	}
+	public String getAreaDescription() {
+		return areaDescription;
+	}
+
+	public void setAreaDescription(String areaDescription) {
+		this.areaDescription = areaDescription;
+	}
+	// ------------------Second phase Enhancement: Adding Areas: Code end------------------//
+	
 	public String getUserId() {
 		return userId;
 	}

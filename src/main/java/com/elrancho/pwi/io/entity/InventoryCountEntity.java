@@ -8,18 +8,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.TableGenerator;
 
 @Entity(name = "inventorycount")
 public class InventoryCountEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@TableGenerator(name = "Inventory_Gen", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "Inv_Gen", initialValue = 688357, allocationSize = 1000)
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "Inventory_Gen")
 	@Column(name = "transactionid")
 	private long transactionId;
 
@@ -36,7 +39,14 @@ public class InventoryCountEntity implements Serializable {
 	@Column(name = "departmentid")
 	private long departmentId;
 
-	@Column(name = "username" )
+	// ------------------Second phase Enhancement: Adding Areas: Code
+	// begin------------------//
+	@Column(name = "areaid")
+	private long areaId;
+	// ------------------Second phase Enhancement: Adding Areas: Code
+	// end------------------//
+
+	@Column(name = "username")
 	private String username;
 
 	@Column(name = "vendoritem")
@@ -44,7 +54,7 @@ public class InventoryCountEntity implements Serializable {
 
 	@Column(name = "unitofmeasure")
 	private String unitOfMeasure;
-	
+
 //	@ManyToOne(fetch=FetchType.LAZY)
 //	@JoinColumns({
 //			@JoinColumn(name = "vendoritem", referencedColumnName = "vendoritem", insertable = false, updatable = false),
@@ -94,18 +104,15 @@ public class InventoryCountEntity implements Serializable {
 //	public void setDepartmentDetails(DepartmentEntity departmentDetails) {
 //		this.departmentDetails = departmentDetails;
 //	}
-	
-	
 
 	public String getUsername() {
 		return username;
 	}
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public long getStoreId() {
 		return storeId;
 	}
@@ -121,6 +128,18 @@ public class InventoryCountEntity implements Serializable {
 	public void setDepartmentId(long departmentId) {
 		this.departmentId = departmentId;
 	}
+
+	// ------------------Second phase Enhancement: Adding Areas: Code
+	// begin------------------//
+	public long getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(long areaId) {
+		this.areaId = areaId;
+	}
+	// ------------------Second phase Enhancement: Adding Areas: Code
+	// end------------------//
 
 	public long getVendorItem() {
 		return vendorItem;
@@ -154,11 +173,11 @@ public class InventoryCountEntity implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public LocalDate getWeekEndDate() {	
+	public LocalDate getWeekEndDate() {
 		return weekEndDate;
 	}
 
-	public void setWeekEndDate(LocalDate weekEndDate) {	
+	public void setWeekEndDate(LocalDate weekEndDate) {
 		this.weekEndDate = weekEndDate;
 	}
 

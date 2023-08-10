@@ -16,6 +16,11 @@ public interface InventoryCountRepository extends CrudRepository<InventoryCountE
 
 	public InventoryCountEntity findInventoryCountByStoreIdAndDepartmentIdAndWeekEndDateAndVendorItem(
 			long storeId, long departmentId, LocalDate periodDate, long vendorItem);
+	
+	// ------------------Second phase Enhancement: Adding Areas: Code begin------------------//
+	public InventoryCountEntity findInventoryCountByStoreIdAndDepartmentIdAndAreaIdAndWeekEndDateAndVendorItem(
+			long storeId, long departmentId, long areaId, LocalDate periodDate, long vendorItem);
+	// ------------------Second phase Enhancement: Adding Areas: Code end------------------//
 
 	public List<InventoryCountEntity> findInventoryCountByStoreIdAndDepartmentIdAndWeekEndDate(
 			long storeId, long departmentId, LocalDate periodDate);

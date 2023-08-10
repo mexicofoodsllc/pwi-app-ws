@@ -94,7 +94,7 @@ public class Utils {
 		if (LocalDate.now().getDayOfWeek().toString().equals("SUNDAY"))
 			return LocalDate.now().with(TemporalAdjusters.previous(DayOfWeek.SATURDAY));
 		else
-			return LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
+			return LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
 
 	}
 
@@ -266,7 +266,8 @@ public class Utils {
 	//Save inventory by store by department by week to csv file
 	public static void saveInventoryCountToCsvByStoreByDepartmentByWeek(PrintWriter writer, List<InventoryCountRest> inventoryCounts) {
         	
-		String[] CSV_HEADER = { "storeId", "departmentId","userId",
+		//the name of the header column must match the name of the bean properties
+		String[] CSV_HEADER = { "storeId", "departmentId", "areaDescription", "userId",
 				"vendorItem","itemDescription","cost","quantity","totalAmount", "weekEndDate", "dateUpdated", "itemMaster","unitOfMeasure"};
 		StatefulBeanToCsv<InventoryCountRest> beanToCsv = null;
 		try (

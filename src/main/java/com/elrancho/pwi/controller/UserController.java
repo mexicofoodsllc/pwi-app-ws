@@ -45,7 +45,7 @@ public class UserController {
 	@Autowired
 	StoreService storeService;
 
-	// this is commented to secure user account being access by other users using
+	// this is commented to secure user account begin access by other users using
 	// guessed usernames
 
 	/*
