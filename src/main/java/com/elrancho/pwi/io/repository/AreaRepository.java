@@ -10,5 +10,6 @@ public interface AreaRepository extends CrudRepository<AreaEntity, Long>{
 	
 	public AreaEntity findAreaByDescription(String areaDescription);
 	public AreaEntity findAreaByAreaId(long areaId);
+	//
 
 }
